@@ -2,11 +2,10 @@
 #![no_main]
 #![feature(abi_x86_interrupt)]
 
-use tiny_os::serial_print;
 use core::panic::PanicInfo;
 use lazy_static::lazy_static;
 use x86_64::structures::idt::{ InterruptDescriptorTable, InterruptStackFrame};
-use tiny_os::{exit_qemu, QemuExitCode, serial_println};
+use tiny_os::{exit_qemu, QemuExitCode, serial_println, serial_print};
 
 lazy_static! {
     static ref TEST_IDT: InterruptDescriptorTable = {

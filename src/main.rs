@@ -13,24 +13,18 @@ pub extern "C" fn _start() -> ! {
 
     tiny_os::init();
 
-    fn stack_overflow() {
-        stack_overflow();
-    }
-
-    stack_overflow();
-
     #[cfg(test)]
     test_main();
 
     println!("It did not crash!");
-    loop {}
+    tiny_os::hlt_loop();
 }
 
 #[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    tiny_os::hlt_loop();
 }
 
 #[cfg(test)]
