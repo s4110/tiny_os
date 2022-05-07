@@ -35,6 +35,7 @@ struct Selectors {
     tss_selector: SegmentSelector,
 }
 
+#[allow(deprecated)]
 pub fn init() {
     use x86_64::instructions::segmentation::set_cs;
     use x86_64::instructions::tables::load_tss;
